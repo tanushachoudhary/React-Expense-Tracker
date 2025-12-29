@@ -2,8 +2,7 @@
 
 This is a React-based application that helps users manage their finances by tracking income and expenses using the Context API for state management.
 
-
-![2](https://github.com/user-attachments/assets/89f69d61-3115-4868-8a66-dba5287efabc)
+<img width="1862" height="848" alt="Screenshot 2025-12-29 175614" src="https://github.com/user-attachments/assets/3053eaa0-fde4-4074-84ec-d43a02fdcb1a" />
 
 
 ## Features
