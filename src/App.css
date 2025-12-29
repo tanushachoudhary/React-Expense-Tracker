@@ -1,7 +1,32 @@
-@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
 
+/* --- Theme Variables --- */
 :root {
-  --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  /* Light Mode Defaults */
+  --primary-color: #5b9bf4;
+  --bg-color: #f0f2f5;
+  --card-bg: #ffffff;
+  --text-color: #333;
+  --text-secondary: #777;
+  --border-color: #eee;
+  --input-bg: #fafafa;
+  --success-color: #2ecc71;
+  --danger-color: #e74c3c;
+  --shadow-light: 0 4px 6px rgba(0, 0, 0, 0.05);
+  --shadow-strong: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Mode Overrides */
+[data-theme="dark"] {
+  --primary-color: #5b9bf4; /* Lighter indigo for dark backgrounds */
+  --bg-color: #121212;
+  --card-bg: #1e1e1e;
+  --text-color: #e0e0e0;
+  --text-secondary: #aaa;
+  --border-color: #333;
+  --input-bg: #2c2c2c;
+  --shadow-light: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --shadow-strong: 0 10px 25px rgba(0, 0, 0, 0.5);
 }
 
 * {
@@ -9,150 +34,219 @@
 }
 
 body {
-  background-color: #FFE0B5 ;
+  background-color: var(--bg-color);
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.app-wrapper {
+  padding: 20px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  margin: 0;
-  font-family: 'Lato', sans-serif;
 }
 
+/* --- Toggle Button --- */
+.theme-toggle-btn {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  font-size: 20px;
+  box-shadow: var(--shadow-light);
+  transition: all 0.3s ease;
+}
+
+.theme-toggle-btn:hover {
+  transform: scale(1.05);
+}
+
+/* --- Container --- */
 .container {
-  margin: 30px auto;
-  width: 350px;
+  background-color: var(--card-bg);
+  width: 600px;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: var(--shadow-strong);
+  transition: background-color 0.3s ease;
 }
 
-h1 {
-  letter-spacing: 1px;
+h1,
+h2 {
+  text-align: center;
   margin: 0;
 }
-
-h3 {
-  border-bottom: 1px solid #bbb;
-  padding-bottom: 10px;
-  margin: 40px 0 10px;
+h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 10px;
 }
-
+h3 {
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 10px;
+  margin: 30px 0 15px;
+  font-size: 18px;
+  color: var(--text-color);
+}
 h4 {
   margin: 0;
+  font-weight: 400;
+  font-size: 14px;
   text-transform: uppercase;
+  color: var(--text-secondary);
 }
 
+.balance-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.balance-container h1 {
+  font-size: 32px;
+  letter-spacing: 1px;
+}
+
+/* --- Income/Exp Box --- */
 .inc-exp-container {
-  background-color: #FEFDED;
-  box-shadow: var(--box-shadow);
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: var(--shadow-light);
   padding: 20px;
   display: flex;
   justify-content: space-between;
   margin: 20px 0;
+  transition: background-color 0.3s ease;
 }
-
 .inc-exp-container > div {
   flex: 1;
   text-align: center;
 }
-
 .inc-exp-container > div:first-of-type {
-  border-right: 1px solid #dedede;
+  border-right: 1px solid var(--border-color);
 }
 
 .money {
   font-size: 20px;
-  letter-spacing: 1px;
+  font-weight: 600;
   margin: 5px 0;
 }
-
 .money.plus {
-  color: #2ecc71;
+  color: var(--success-color);
 }
-
 .money.minus {
-  color: #c0392b;
+  color: var(--danger-color);
 }
 
+/* --- Forms --- */
 label {
   display: inline-block;
-  margin: 10px 0;
+  margin: 10px 0 5px;
+  font-size: 14px;
+  font-weight: 500;
 }
 
-input[type='text'],
-input[type='number'] {
-  border: 1px solid #dedede;
-  background: #FEFDED;
-  border-radius: 2px;
+input[type="text"],
+input[type="number"] {
+  border: 1px solid var(--border-color);
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  border-radius: 8px;
   display: block;
+  font-family: inherit;
   font-size: 16px;
-  padding: 10px;
+  padding: 12px;
   width: 100%;
+  transition: all 0.3s ease;
+}
+input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(92, 107, 192, 0.1);
 }
 
+/* --- Buttons --- */
 .btn {
   cursor: pointer;
-  background-color: #ad875b;
-  box-shadow: var(--box-shadow);
+  background-color: var(--primary-color);
+  box-shadow: var(--shadow-light);
   color: #fff;
   border: 0;
+  border-radius: 8px;
   display: block;
   font-size: 16px;
-  margin: 10px 0 30px;
-  padding: 10px;
+  font-weight: 600;
+  margin: 20px 0 10px;
+  padding: 12px;
   width: 100%;
+  transition: transform 0.1s ease, background-color 0.3s ease;
+}
+.btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
 }
 
-.btn:focus,
-.delete-btn:focus {
-  outline: 0;
-}
-
+/* --- List --- */
 .list {
   list-style-type: none;
   padding: 0;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
-
 .list li {
-  background-color: #FEFDED;
-  box-shadow: var(--box-shadow);
-  color: #333;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
   display: flex;
   justify-content: space-between;
+  align-items: center;
   position: relative;
-  padding: 10px;
+  padding: 12px 15px;
   margin: 10px 0;
+  border-radius: 8px;
+  transition: all 0.2s ease;
 }
-
+.list li:hover {
+  transform: translateX(3px);
+  box-shadow: var(--shadow-light);
+}
 .list li.plus {
-  border-right: 5px solid #2ecc71;
+  border-left: 5px solid var(--success-color);
 }
-
 .list li.minus {
-  border-right: 5px solid #c0392b;
+  border-left: 5px solid var(--danger-color);
 }
 
 .delete-btn {
   cursor: pointer;
-  background-color: #e74c3c;
+  background-color: var(--danger-color);
   border: 0;
   color: #fff;
-  font-size: 20px;
-  line-height: 20px;
-  padding: 2px 5px;
+  font-size: 14px;
+  padding: 6px;
+  border-radius: 4px;
   position: absolute;
   top: 50%;
-  left: 0;
-  transform: translate(-100%, -50%);
+  left: -30px;
+  transform: translate(0, -50%);
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: all 0.3s ease;
 }
-
 .list li:hover .delete-btn {
   opacity: 1;
+  left: -35px;
 }
 
-@media (max-width: 320px) {
+@media (max-width: 460px) {
   .container {
-    width: 300px;
+    width: 100%;
   }
 }
