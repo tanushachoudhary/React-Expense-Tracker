@@ -25,8 +25,7 @@ This is a React-based application that helps users manage their finances by trac
 1. **Clone the repository:**
    ```sh
    git clone [https://github.com/yourusername/expense-tracker.git](https://github.com/yourusername/expense-tracker.git)
-
-```
+   ```
 
 2. **Navigate to the project directory:**
 ```sh
@@ -48,8 +47,6 @@ npm run dev
 
 ```
 
-
-*(Note: Use `npm start` if using Create React App, or `npm run dev` if using Vite)*
 
 ## How It Works
 
